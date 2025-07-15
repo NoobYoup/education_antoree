@@ -1,4 +1,3 @@
-// pages/FavoritesPage.jsx
 import { useEffect, useState } from 'react';
 import useFavorites from '@/hooks/useFavorites';
 import { getAllProducts } from '@/services/productService';

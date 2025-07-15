@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import SearchInput from './SearchInput';
 import NavButton from './NavButton';
+import { useSearch } from '@/contexts/SearchContext.jsx';
+import useFavorites from '@/hooks/useFavorites';
 
 import styles from './Navbar.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function Navbar({ onSearch, favoriteIds }) {
-    const [search, setSearch] = useState('');
+function Navbar() {
+    const { search, setSearch } = useSearch();
+    const { favoriteIds } = useFavorites();
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
-        onSearch?.(e.target.value);
     };
 
     return (
