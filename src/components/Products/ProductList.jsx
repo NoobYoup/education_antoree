@@ -8,7 +8,7 @@ import ProductModalDetail from './ProductModalDetail';
 
 const ProductList = ({ search }) => {
     const [products, setProducts] = useState([]);
-    const [limit, setLimit] = useState(0);
+    const [limit] = useState(30); // Mặc định 30 sản phẩm/trang
     const [totalProducts, setTotalProducts] = useState(0);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
@@ -22,15 +22,16 @@ const ProductList = ({ search }) => {
         setLoading(true);
         try {
             if (debouncedSearchTerm) {
-                const { products } = await searchProducts(debouncedSearchTerm);
-                setProducts(products);
-                setNoResult(products.length === 0); // set noResult khi không tìm thấy sản phẩm
-            } else {
-                const { products, total, limit } = await getAllProducts({ page });
+                const { products, total } = await searchProducts(debouncedSearchTerm, page, limit);
                 setProducts(products);
                 setTotalProducts(total);
-                setLimit(limit);
-                setNoResult(false); // reset noResult khi không tìm thấy sản phẩm
+
+                setNoResult(products.length === 0);
+            } else {
+                const { products, total } = await getAllProducts({ page, limit });
+                setProducts(products);
+                setTotalProducts(total);
+                setNoResult(false);
             }
         } catch (error) {
             console.error(error);
@@ -40,7 +41,12 @@ const ProductList = ({ search }) => {
 
     useEffect(() => {
         fetchData();
-    }, [page, debouncedSearchTerm]);
+    }, [page, debouncedSearchTerm, limit]);
+
+    // Reset page về 1 khi đổi từ khóa tìm kiếm
+    useEffect(() => {
+        setPage(1);
+    }, [debouncedSearchTerm]);
 
     const handlePageChange = ({ selected }) => {
         setPage(selected + 1);
