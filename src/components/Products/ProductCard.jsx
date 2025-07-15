@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
-
+import { useProductModal } from '@/contexts/ProductModalContext.jsx';
 import classNames from 'classnames/bind';
 import styles from './ProductCard.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ProductCard({ product, onViewDetail, isFavorite, toggleFavorite }) {
+function ProductCard({ product, isFavorite, toggleFavorite }) {
+    const { openModal } = useProductModal();
+
     return (
         <motion.div
             className="col-lg-3 col-md-6 col-sm-12 mb-4"
@@ -28,7 +30,7 @@ function ProductCard({ product, onViewDetail, isFavorite, toggleFavorite }) {
                     <p className={cx('description')}>{product?.description}</p>
                     <div className={cx('price')}>{product?.price.toLocaleString('vi-VN')}₫</div>
                     <div className={cx('actions')}>
-                        <button className={cx('btnDetail')} onClick={() => onViewDetail(product)}>
+                        <button className={cx('btnDetail')} onClick={() => openModal(product)}>
                             <i className="fas fa-eye me-2" />
                             Xem chi tiết
                         </button>

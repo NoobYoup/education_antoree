@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-// import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames/bind';
 import styles from './ProductModalDetail.module.scss';

@@ -4,7 +4,6 @@ import ReactPaginate from 'react-paginate';
 import Skeleton from 'react-loading-skeleton';
 import { getAllProducts, searchProducts } from '../../services/productService';
 import ProductCard from './ProductCard';
-import ProductModalDetail from './ProductModalDetail';
 import FilterPrice from '../FilterPrice/FilterPrice';
 
 const ProductList = ({ search, isFavorite, toggleFavorite }) => {
@@ -13,8 +12,6 @@ const ProductList = ({ search, isFavorite, toggleFavorite }) => {
     const [totalProducts, setTotalProducts] = useState(0);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [debouncedSearchTerm] = useDebounce(search, 400);
     const [noResult, setNoResult] = useState(false);
@@ -69,18 +66,6 @@ const ProductList = ({ search, isFavorite, toggleFavorite }) => {
     // tính số trang
     const pageCount = Math.ceil(totalProducts / limit);
 
-    // xử lý xem chi tiết sản phẩm
-    const handleViewDetail = (product) => {
-        setSelectedProduct(product);
-        setIsModalOpen(true);
-    };
-
-    // xử lý đóng modal
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-        setSelectedProduct(null);
-    };
-
     // áp dụng filter
     const applyFilters = (products) => {
         let filtered = [...products];
@@ -115,14 +100,12 @@ const ProductList = ({ search, isFavorite, toggleFavorite }) => {
                         <ProductCard
                             key={product.id}
                             product={product}
-                            onViewDetail={handleViewDetail}
                             isFavorite={isFavorite(product?.id)}
                             toggleFavorite={toggleFavorite}
                         />
                     ))
                 )}
             </div>
-            <ProductModalDetail isOpen={isModalOpen} onClose={handleCloseModal} product={selectedProduct} />
 
             <div className="d-flex justify-content-center mt-4">
                 {totalProducts > 0 && (
