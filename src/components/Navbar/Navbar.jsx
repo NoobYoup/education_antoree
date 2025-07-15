@@ -1,4 +1,4 @@
-// components/Navbar/Navbar.jsx
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import SearchInput from './SearchInput';
 import NavButton from './NavButton';
@@ -10,7 +10,6 @@ const cx = classNames.bind(styles);
 
 function Navbar({ onSearch, favoriteIds }) {
     const [search, setSearch] = useState('');
-
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
         onSearch?.(e.target.value);
@@ -19,10 +18,10 @@ function Navbar({ onSearch, favoriteIds }) {
     return (
         <nav className={`${cx('custom-navbar')} navbar navbar-expand-lg`}>
             <div className="container">
-                <a className={`${cx('custom-navbar-brand')} navbar-brand`} href="#">
+                <Link className={`${cx('custom-navbar-brand')} navbar-brand`} to="/">
                     <i className="fa-solid fa-graduation-cap " />
                     Antoree
-                </a>
+                </Link>
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span className="navbar-toggler-icon"></span>
@@ -35,13 +34,17 @@ function Navbar({ onSearch, favoriteIds }) {
                         </div>
 
                         <div className={cx('nav-actions', 'd-flex', 'justify-content-end', 'mt-2', 'mt-md-0')}>
-                            <NavButton
-                                iconClass="fa-solid fa-heart"
-                                label="Yêu thích"
-                                badgeCount={favoriteIds.length}
-                                onClick={() => {}}
-                            />
-                            <NavButton iconClass="fa-solid fa-clock-rotate-left" label="Lịch sử" badgeCount={0} />
+                            <Link to="/favorite" className="text-decoration-none">
+                                <NavButton
+                                    iconClass="fa-solid fa-heart"
+                                    label="Yêu thích"
+                                    badgeCount={favoriteIds.length}
+                                    onClick={() => {}}
+                                />
+                            </Link>
+                            <Link to="/history" className="text-decoration-none">
+                                <NavButton iconClass="fa-solid fa-clock-rotate-left" label="Lịch sử" badgeCount={0} />
+                            </Link>
                         </div>
                     </div>
                 </div>

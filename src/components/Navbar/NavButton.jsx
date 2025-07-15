@@ -5,11 +5,11 @@ const cx = classNames.bind(styles);
 
 function NavButton({ iconClass, label, badgeCount, onClick }) {
     return (
-        <a href="#" className={cx('nav-btn')} onClick={onClick}>
+        <button type="button" className={cx('nav-btn')} onClick={onClick}>
             <i className={iconClass} />
             <span className="ms-1">{label}</span>
             {badgeCount > 0 && <span className={cx('cart-badge')}>{badgeCount}</span>}
-        </a>
+        </button>
     );
 }
 
