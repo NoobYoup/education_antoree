@@ -1,10 +1,10 @@
 import ProductList from '@/components/Products/ProductList';
 import { useSearch } from '@/contexts/SearchContext.jsx';
-import useFavorites from '@/hooks/useFavorites';
+import { useFavoritesContext } from '@/contexts/FavoritesContext.jsx';
 
 function Home() {
     const { search } = useSearch();
-    const { isFavorite, toggleFavorite } = useFavorites();
+    const { isFavorite, toggleFavorite } = useFavoritesContext();
 
     return (
         <>

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import SearchInput from './SearchInput';
 import NavButton from './NavButton';
 import { useSearch } from '@/contexts/SearchContext.jsx';
-import useFavorites from '@/hooks/useFavorites';
+import { useFavoritesContext } from '@/contexts/FavoritesContext.jsx';
 
 import styles from './Navbar.module.scss';
 import classNames from 'classnames/bind';
@@ -11,7 +11,9 @@ const cx = classNames.bind(styles);
 
 function Navbar() {
     const { search, setSearch } = useSearch();
-    const { favoriteIds } = useFavorites();
+
+    const { favoriteIds } = useFavoritesContext();
+
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
     };
