@@ -39,7 +39,6 @@ function Navbar({ onSearch, onShowFavorites }) {
                         onClick={onShowFavorites}
                     />
                     <NavButton iconClass="fa-solid fa-clock-rotate-left" label="Lịch sử" badgeCount={0} />
-                    {/* <NavButton iconClass="fa-solid fa-user" label="Tài khoản" /> */}
                 </div>
             </div>
         </nav>

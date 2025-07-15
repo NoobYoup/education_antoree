@@ -1,0 +1,98 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+
+    margin: 0 auto;
+    max-width: 800px;
+    width: 95%;
+    position: relative;
+    top: 2rem;
+    z-index: 1001;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.25rem;
+    border: none;
+    background: none;
+    color: #6b7280;
+    cursor: pointer;
+
+    &:hover {
+        color: #ef4444;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+.image {
+    flex: 1;
+
+    img {
+        width: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+}
+
+.info {
+    flex: 2;
+
+    h2 {
+        margin-bottom: 1rem;
+        color: #1f2937;
+    }
+
+    .description {
+        color: #4b5563;
+        margin-bottom: 1rem;
+    }
+
+    .price {
+        color: #f97316;
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .rating {
+        color: #2563eb;
+        font-weight: 500;
+    }
+
+    .likeBtn {
+        margin-top: 1rem;
+        background: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 999px;
+        padding: 0.5rem 1.5rem;
+        font-weight: 500;
+        transition: 0.3s ease;
+
+        &:hover {
+            background: #dc2626;
+        }
+    }
+}

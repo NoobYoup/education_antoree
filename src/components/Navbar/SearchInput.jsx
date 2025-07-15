@@ -10,7 +10,7 @@ function SearchInput({ value, onChange }) {
             <input
                 type="text"
                 className={cx('search-input')}
-                placeholder="Tìm kiếm khóa học, sách, workshop..."
+                placeholder="Tìm kiếm tại đây..."
                 value={value}
                 onChange={onChange}
                 style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}

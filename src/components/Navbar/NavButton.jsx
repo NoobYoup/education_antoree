@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types';
 import styles from './NavButton.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function NavButton({ iconClass, label, badgeCount = 0, onClick }) {
+function NavButton({ iconClass, label, badgeCount, onClick }) {
     return (
         <a href="#" className={cx('nav-btn')} onClick={onClick}>
             <i className={iconClass} />
@@ -13,12 +12,5 @@ function NavButton({ iconClass, label, badgeCount = 0, onClick }) {
         </a>
     );
 }
-
-NavButton.propTypes = {
-    iconClass: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    badgeCount: PropTypes.number,
-    onClick: PropTypes.func,
-};
 
 export default NavButton;

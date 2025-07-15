@@ -34,3 +34,32 @@ body {
     overflow-y: overlay;
     line-height: 1.6;
 }
+
+// custom pagination
+// .pagination {
+//     display: flex;
+//     list-style: none;
+//     gap: 0.5rem;
+
+//     .page-item {
+//         .page-link {
+//             padding: 0.5rem 1rem;
+//             border-radius: 999px;
+//             border: none;
+//             background-color: #e5e7eb;
+//             color: #374151;
+//             transition: all 0.3s ease;
+//             cursor: pointer;
+//         }
+
+//         &.active .page-link {
+//             background-color: #2563eb;
+//             color: white;
+//             font-weight: bold;
+//         }
+
+//         .page-link:hover {
+//             background-color: #cbd5e1;
+//         }
+//     }
+// }
