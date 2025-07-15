@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
 import { useProductModal } from '@/contexts/ProductModalContext.jsx';
+import Button from '@/components/Button/Button';
 import classNames from 'classnames/bind';
-import styles from './ProductCard.module.scss';
+import cardStyles from './ProductCard.module.scss';
+import buttonStyles from '@/components/Button/Button.module.scss';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(cardStyles);
+const cxButton = classNames.bind(buttonStyles);
 
 function ProductCard({ product, isFavorite, toggleFavorite }) {
     const { openModal } = useProductModal();
@@ -30,10 +33,14 @@ function ProductCard({ product, isFavorite, toggleFavorite }) {
                     <p className={cx('description')}>{product?.description}</p>
                     <div className={cx('price')}>{product?.price.toLocaleString('vi-VN')}₫</div>
                     <div className={cx('actions')}>
-                        <button className={cx('btnDetail')} onClick={() => openModal(product)}>
+                        <Button
+                            className={cxButton('button', 'button-detail')}
+                            type="button"
+                            onClick={() => openModal(product)}
+                        >
                             <i className="fas fa-eye me-2" />
                             Xem chi tiết
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

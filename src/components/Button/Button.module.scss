@@ -1,0 +1,18 @@
+.button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+    }
+}
+
+.button-detail {
+    width: 100%;
+}

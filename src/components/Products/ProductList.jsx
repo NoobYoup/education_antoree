@@ -5,6 +5,11 @@ import Skeleton from 'react-loading-skeleton';
 import { getAllProducts, searchProducts } from '../../services/productService';
 import ProductCard from './ProductCard';
 import FilterPrice from '../FilterPrice/FilterPrice';
+import Button from '@/components/Button/Button';
+import classNames from 'classnames/bind';
+import buttonStyles from '@/components/Button/Button.module.scss';
+
+const cxButton = classNames.bind(buttonStyles);
 
 const ProductList = ({ search, isFavorite, toggleFavorite }) => {
     const [products, setProducts] = useState([]);
@@ -83,7 +88,13 @@ const ProductList = ({ search, isFavorite, toggleFavorite }) => {
 
     return (
         <div className="container my-5">
-            <FilterPrice value={filterPrice} onChange={setFilterPrice} />
+            <div className="d-flex justify-content-between align-items-center">
+                <FilterPrice value={filterPrice} onChange={setFilterPrice} />
+                <Button className={`${cxButton('button')} bg-success mb-3`} type="button" onClick={() => {}}>
+                    <i class="fa-solid fa-robot me-2"></i>
+                    Gợi ý sản phẩm
+                </Button>
+            </div>
             <div className="row">
                 {loading ? (
                     products.length > 0 &&
