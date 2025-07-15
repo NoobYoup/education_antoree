@@ -91,7 +91,7 @@ const ProductList = ({ search, isFavorite, toggleFavorite }) => {
             <div className="d-flex justify-content-between align-items-center">
                 <FilterPrice value={filterPrice} onChange={setFilterPrice} />
                 <Button className={`${cxButton('button')} bg-success mb-3`} type="button" onClick={() => {}}>
-                    <i class="fa-solid fa-robot me-2"></i>
+                    <i className="fa-solid fa-robot me-2"></i>
                     Gợi ý sản phẩm
                 </Button>
             </div>

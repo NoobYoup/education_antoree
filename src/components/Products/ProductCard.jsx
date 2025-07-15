@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useProductModal } from '@/contexts/ProductModalContext.jsx';
+import { useViewHistoryContext } from '@/contexts/ViewHistory.jsx';
 import Button from '@/components/Button/Button';
 import classNames from 'classnames/bind';
 import cardStyles from './ProductCard.module.scss';
@@ -10,7 +11,7 @@ const cxButton = classNames.bind(buttonStyles);
 
 function ProductCard({ product, isFavorite, toggleFavorite }) {
     const { openModal } = useProductModal();
-
+    const { addToHistory } = useViewHistoryContext();
     return (
         <motion.div
             className="col-lg-3 col-md-6 col-sm-12 mb-4"
@@ -36,7 +37,10 @@ function ProductCard({ product, isFavorite, toggleFavorite }) {
                         <Button
                             className={cxButton('button', 'button-detail')}
                             type="button"
-                            onClick={() => openModal(product)}
+                            onClick={() => {
+                                addToHistory(product);
+                                openModal(product);
+                            }}
                         >
                             <i className="fas fa-eye me-2" />
                             Xem chi tiết
