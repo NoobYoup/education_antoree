@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function SearchInput({ value, onChange }) {
+function SearchInput({ value, onSearchChange }) {
     return (
         <div className={cx('search-container')}>
             <i className={cx('search-icon', 'fas fa-search')} />
@@ -12,7 +12,7 @@ function SearchInput({ value, onChange }) {
                 className={cx('search-input')}
                 placeholder="Tìm kiếm tại đây..."
                 value={value}
-                onChange={onChange}
+                onChange={onSearchChange}
                 style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
             />
         </div>

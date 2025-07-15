@@ -1,11 +1,14 @@
 import Navbar from '@/components/Navbar/Navbar';
 import ProductList from '@/components/Products/ProductList';
+import { useState } from 'react';
 
 function Home() {
+    const [search, setSearch] = useState('');
+
     return (
         <>
-            <Navbar />
-            <ProductList />
+            <Navbar onSearch={setSearch} />
+            <ProductList search={search} />
         </>
     );
 }

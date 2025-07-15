@@ -10,4 +10,16 @@ const getAllProducts = async () => {
     return { products, total, limit };
 };
 
-export { getAllProducts };
+const searchProducts = async (query) => {
+    const res = await axios.get(`${API_URL}/products/search`, {
+        params: {
+            q: query,
+        },
+    });
+
+    const { products, total, limit } = res.data;
+
+    return { products, total, limit };
+};
+
+export { getAllProducts, searchProducts };

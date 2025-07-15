@@ -9,10 +9,10 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function Navbar({ onSearch, onShowFavorites }) {
-    const [searchTerm, setSearchTerm] = useState('');
+    const [search, setSearch] = useState('');
 
     const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
+        setSearch(e.target.value);
         onSearch?.(e.target.value);
     };
 
@@ -29,7 +29,7 @@ function Navbar({ onSearch, onShowFavorites }) {
                 </button>
 
                 <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <SearchInput value={searchTerm} onChange={handleSearchChange} />
+                    <SearchInput value={search} onSearchChange={handleSearchChange} />
                 </div>
                 <div className={cx('nav-actions')}>
                     <NavButton
