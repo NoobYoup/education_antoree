@@ -2,10 +2,13 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames/bind';
 import styles from './ProductModalDetail.module.scss';
+import { useFavoritesContext } from '@/contexts/FavoritesContext.jsx';
 
 const cx = classNames.bind(styles);
 
 function ProductModalDetail({ isOpen, onClose, product }) {
+    const { isFavorite, toggleFavorite } = useFavoritesContext();
+
     // xử lý tắt modal bằng phím ESC
     useEffect(() => {
         const handleEsc = (e) => {
@@ -57,8 +60,12 @@ function ProductModalDetail({ isOpen, onClose, product }) {
                                     Đánh giá: <i className="fa-solid fa-star"></i> {product.rating} / 5
                                 </p>
 
-                                <button className={cx('likeBtn')}>
-                                    <i className="fas fa-heart me-2"></i> Yêu thích
+                                <button
+                                    className={cx('likeBtn', { active: isFavorite(product.id) })}
+                                    onClick={() => toggleFavorite(product.id)}
+                                >
+                                    <i className="fas fa-heart me-2"></i>
+                                    Yêu thích
                                 </button>
                             </div>
                         </div>

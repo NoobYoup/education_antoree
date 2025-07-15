@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import useFavorites from '@/hooks/useFavorites';
+import { useFavoritesContext } from '@/contexts/FavoritesContext.jsx';
 import { getAllProducts } from '@/services/productService';
 import ProductCard from '@/components/Products/ProductCard';
 import Skeleton from 'react-loading-skeleton';
 
 function FavoritesPage() {
-    const { getFavoriteIds, isFavorite } = useFavorites();
+    const { getFavoriteIds, isFavorite, toggleFavorite } = useFavoritesContext();
     const [favoriteProducts, setFavoriteProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -46,7 +46,12 @@ function FavoritesPage() {
                 <div className="row">
                     {favoriteProducts.length > 0 &&
                         favoriteProducts.map((product) => (
-                            <ProductCard key={product.id} product={product} isFavorite={isFavorite(product.id)} />
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                isFavorite={isFavorite(product.id)}
+                                toggleFavorite={toggleFavorite}
+                            />
                         ))}
                 </div>
             )}

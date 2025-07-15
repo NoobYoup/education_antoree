@@ -5,9 +5,9 @@ import { FavoritesProvider } from './FavoritesContext.jsx';
 const AppProvider = ({ children }) => {
     return (
         <SearchProvider>
-            <ProductModalProvider>
-                <FavoritesProvider>{children}</FavoritesProvider>
-            </ProductModalProvider>
+            <FavoritesProvider>
+                <ProductModalProvider>{children}</ProductModalProvider>
+            </FavoritesProvider>
         </SearchProvider>
     );
 };
