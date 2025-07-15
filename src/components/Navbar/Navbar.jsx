@@ -8,7 +8,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function Navbar({ onSearch, onShowFavorites }) {
+function Navbar({ onSearch, favoriteIds }) {
     const [search, setSearch] = useState('');
 
     const handleSearchChange = (e) => {
@@ -38,8 +38,8 @@ function Navbar({ onSearch, onShowFavorites }) {
                             <NavButton
                                 iconClass="fa-solid fa-heart"
                                 label="Yêu thích"
-                                badgeCount={3}
-                                onClick={onShowFavorites}
+                                badgeCount={favoriteIds.length}
+                                onClick={() => {}}
                             />
                             <NavButton iconClass="fa-solid fa-clock-rotate-left" label="Lịch sử" badgeCount={0} />
                         </div>

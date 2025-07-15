@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
+
 import classNames from 'classnames/bind';
 import styles from './ProductCard.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ProductCard({ product, onViewDetail }) {
+function ProductCard({ product, onViewDetail, isFavorite, toggleFavorite }) {
     return (
         <motion.div
             className="col-lg-3 col-md-6 col-sm-12 mb-4"
@@ -15,7 +16,10 @@ function ProductCard({ product, onViewDetail }) {
             <div className={cx('card')}>
                 <div className={cx('imageWrapper')}>
                     <img src={product?.thumbnail} alt={product?.title} className={cx('image')} />
-                    <button className={cx('favoriteBtn')}>
+                    <button
+                        className={cx('favoriteBtn', { active: isFavorite })}
+                        onClick={() => toggleFavorite(product?.id)}
+                    >
                         <i className="fas fa-heart" />
                     </button>
                 </div>

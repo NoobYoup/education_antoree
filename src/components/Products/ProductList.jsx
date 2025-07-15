@@ -7,7 +7,7 @@ import ProductCard from './ProductCard';
 import ProductModalDetail from './ProductModalDetail';
 import FilterPrice from '../FilterPrice/FilterPrice';
 
-const ProductList = ({ search }) => {
+const ProductList = ({ search, isFavorite, toggleFavorite }) => {
     const [products, setProducts] = useState([]);
     const [limit] = useState(30); // Mặc định 30 sản phẩm/trang
     const [totalProducts, setTotalProducts] = useState(0);
@@ -112,7 +112,13 @@ const ProductList = ({ search }) => {
                 ) : (
                     products.length > 0 &&
                     products.map((product) => (
-                        <ProductCard key={product.id} product={product} onViewDetail={handleViewDetail} />
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            onViewDetail={handleViewDetail}
+                            isFavorite={isFavorite(product?.id)}
+                            toggleFavorite={toggleFavorite}
+                        />
                     ))
                 )}
             </div>
