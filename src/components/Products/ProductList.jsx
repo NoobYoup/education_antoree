@@ -8,6 +8,7 @@ import FilterPrice from '../FilterPrice/FilterPrice';
 import Button from '@/components/Button/Button';
 import classNames from 'classnames/bind';
 import buttonStyles from '@/components/Button/Button.module.scss';
+import { Link } from 'react-router-dom';
 
 const cxButton = classNames.bind(buttonStyles);
 
@@ -90,10 +91,12 @@ const ProductList = ({ search, isFavorite, toggleFavorite }) => {
         <div className="container my-5">
             <div className="d-flex justify-content-between align-items-center">
                 <FilterPrice value={filterPrice} onChange={setFilterPrice} />
-                <Button className={`${cxButton('button')} bg-success mb-3`} type="button" onClick={() => {}}>
-                    <i className="fa-solid fa-robot me-2"></i>
-                    Gợi ý sản phẩm
-                </Button>
+                <Link to="/suggestion">
+                    <Button className={`${cxButton('button')} bg-success mb-3`} type="button" onClick={() => {}}>
+                        <i className="fa-solid fa-left-long me-2"></i>
+                        Gợi ý sản phẩm
+                    </Button>
+                </Link>
             </div>
             <div className="row">
                 {loading ? (
