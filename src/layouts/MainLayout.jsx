@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '@/components/Navbar/Navbar';
-import BackToTop from '@/components/BackToTop/BackToTop';
+import BackToTop from '@/components/Button/BackToTop';
 
 function MainLayout() {
     return (
