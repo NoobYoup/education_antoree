@@ -11,7 +11,7 @@ import buttonStyles from '@/components/Button/Button.module.scss';
 
 const cxButton = classNames.bind(buttonStyles);
 
-const SUGGEST_LIMIT = 20;
+const SUGGEST_LIMIT = 10;
 
 function Suggestion() {
     const { favorites } = useFavoritesContext();

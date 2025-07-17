@@ -37,6 +37,7 @@ function History() {
                         viewed.map((item) => (
                             <>
                                 <ProductCard
+                                    key={item.id}
                                     product={item}
                                     isFavorite={isFavorite(item.id)}
                                     toggleFavorite={toggleFavorite}
